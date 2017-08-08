@@ -2,9 +2,9 @@
 1. External source of power for UPS and Rasberry Pi
 
 2. Enable to I2C:
-*1. Input sudo raspi-config in the terminal
-*2. Select: Interfacing Options
-*3. Select: I2C; enable to I2C
+    * 1. Input sudo raspi-config in the terminal
+    * 2. Select: Interfacing Options
+    * 3. Select: I2C; enable to I2C
 
 3. cd /home/pi
 
