@@ -20,16 +20,16 @@
 
 7. Run ups -i, if your configuration is successful you will see the output as below.
 Then UPS can supply Rasberry Pi when you startup the conputer next time.
-	*  id     :DF
-        *  version:10
-        *  energy :is charging
-        *  adc1   :2117
-        *  adc2   :2066
-        *  vcc    :0
-        *  flag   :18
-        *  rgb_r  :0
-        *  rgb_g  :0
-        *  rgb_b  :0
+    *  id     :DF
+    *  version:10
+    *  energy :is charging
+    *  adc1   :2117
+    *  adc2   :2066
+    *  vcc    :0
+    *  flag   :18
+    *  rgb_r  :0
+    *  rgb_g  :0
+    *  rgb_b  :0
 
 ## API
    * setup I2C ,return file descriptor<br>
