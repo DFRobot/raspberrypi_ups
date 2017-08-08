@@ -13,10 +13,10 @@
 5. cd raspberrypi_ups
 
 6. sh setup.sh
-	* 1. Authorize 
-	* 2. Compliation of  so ups ups_count ups_wdog  
-	* 3. Move ups  .so  .h
-	* 4. Revise self-start files
+    * 1. Authorize 
+    * 2. Compliation of  so ups ups_count ups_wdog  
+    * 3. Move ups  .so  .h
+    * 4. Revise self-start files
 
 7. Run ups -i, if your configuration is successful you will see the output as below.
 Then UPS can supply Rasberry Pi when you startup the conputer next time.
