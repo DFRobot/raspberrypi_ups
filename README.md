@@ -65,5 +65,5 @@ Then UPS can supply Rasberry Pi when you startup the conputer next time.
 	   * Rasberry will switch itself on in setting when UPS turns off and run the program as below, the time unit for it is the minute.
 	   * ups -a 1 /home/pi/ups/example/ups_count
 	   * Rasberry will switch itself on in one minute when UPS turns off and run the file: /home/pi/ups/example/ups_count	   
-*The file is a count file, Rasberry will turn off when one minute pass.
+	   * The file is a count file, Rasberry will turn off when one minute pass.
    * UPS can realise amplication by external device such as speaker and etc.
