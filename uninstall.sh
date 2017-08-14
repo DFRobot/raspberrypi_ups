@@ -9,4 +9,4 @@ then
 	sudo cp /dfups/tmp/rc.txt /etc/rc.local
 fi	
 sudo rm -rf /dfups
-rm -rf /home/pi/raspberrypi_ups
+#rm -rf /home/pi/raspberrypi_ups
