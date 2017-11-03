@@ -84,7 +84,7 @@ void autorun(int fd,int min,char *file){
 
 }
 
-void getmsg(fd){
+void getmsg(int fd){
         int version = getVersion(fd);
         int id = getId(fd);
         printf("id     :%X\n",id);
