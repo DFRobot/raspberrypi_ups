@@ -80,15 +80,15 @@ def autorun(fd,num,filename):
 def getMsg(fd):
 	print("id     : %s"% hex(ups.getId(fd)))
 	print("version: %s"% hex(ups.getVersion(fd)))
-	en = (int)(ups.getEnergy(fd))
-	if en < 6:
-		print("energy level:%s"% int(en))
-	elif en == 6:
-		print("energy :is charging")
-	elif en == 7:
-		print("energy :fully charge")
+#	en = (int)(ups.getEnergy(fd))
+#	if en < 6:
+#		print("energy level:%s"% int(en))
+#	elif en == 6:
+#		print("energy :is charging")
+#	elif en == 7:
+#		print("energy :fully charge")
 
-	print("energy : %s"% int(ups.getEnergy(fd)))
+	print("energy : %s"% int(ups.getEnergy(fd))+"%")
 	print("adc1   : %s"% hex(ups.getAdc1(fd)))
 	print("adc2   : %s"% hex(ups.getAdc2(fd)))
 	print("vcc    : %s"% hex(ups.getVcc(fd)))

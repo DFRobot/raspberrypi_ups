@@ -89,9 +89,10 @@ void getmsg(int fd){
         int id = getId(fd);
         printf("id     :%X\n",id);
 		printf("version:%x\n",version);
-
+       
         int energy = getEnergy(fd);
-		if(energy < 6){
+        printf("energy :%d%\n",energy);
+/*		if(energy < 6){
 			printf("energy level:%d\n",energy);
 		}
 		else if(energy == 6){
@@ -100,6 +101,9 @@ void getmsg(int fd){
 		else if(energy == 7){
 			printf("energy :fully charge\n");
 		}
+*/
+
+        
         int adc1 = getAdc1(fd);
         int adc2 = getAdc2(fd);
     	printf("adc1   :%d\n",adc1);

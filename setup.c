@@ -13,11 +13,11 @@ int main(){
 	FILE *fp2 = fopen("/dfups/tmp/startupconfig.txt","r+");
 	if(fp1 == NULL){
 		printf("open rc.local error\n");
-		return -1;
+		return 0;
 	}
 	if(fp2 == NULL){
 		printf("open startupconfig.txt error\n");
-		return -1;
+		return 0;
 	}
 	while(fgets(buf,128,fp1)!=NULL){
 		
