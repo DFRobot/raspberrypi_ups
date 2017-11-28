@@ -23,5 +23,7 @@ int Init(int id);
 int getTimer(int fd);
 int setTimer(int fd,int num);
 int shDown(int fd,int time);
+int setElectricity(int fd,int value);
+int getElectricity(int fd);
 #endif
 

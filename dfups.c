@@ -29,7 +29,7 @@ int getAdc1(int fd){
 
     int adc1 = (adcH << 8)|adcL;
 //
-	
+    
     return adc1;
 }
 
@@ -39,7 +39,7 @@ int getAdc2(int fd){
 
     int adc2 = (adcH << 8)|adcL;
 //
-	
+    
     return adc2;
 }
 
@@ -55,100 +55,114 @@ int getVcc(int fd){
     return vcc;
 }
 
-/*****************功能寄存器*****************/
+/*****************Function register*****************/
 
 int setFunction(int fd,int flag){
-	wiringPiI2CWriteReg8(fd,0x09,flag);
-	
-	return 0;
+    wiringPiI2CWriteReg8(fd,0x09,flag);
+    
+    return 0;
 }
 
 int getFunction(int fd){
-	int flag;
-	
-	flag = wiringPiI2CReadReg8(fd,0x09);
-	return flag;
+    int flag;
+    
+    flag = wiringPiI2CReadReg8(fd,0x09);
+    return flag;
 }
 
 /*****************RGB******************/
 
 int getRgbR(int fd){
-	int rgbR = wiringPiI2CReadReg8(fd,0x0A);
-	return rgbR;
+    int rgbR = wiringPiI2CReadReg8(fd,0x0A);
+    return rgbR;
 }
 
 int setRgbR(int fd,int num){
-	if(num > 255){
-		printf("Please re-enter a value less than 255\n");
-		return -1;
-	}
-	wiringPiI2CWriteReg8(fd,0x0A,num);
-	return 0;
+    if(num > 255){
+        printf("Please re-enter a value less than 255\n");
+        return -1;
+    }
+    wiringPiI2CWriteReg8(fd,0x0A,num);
+    return 0;
 }
 
 int getRgbG(int fd){
-	int rgbG = wiringPiI2CReadReg8(fd,0x0B);
-	return rgbG;
+    int rgbG = wiringPiI2CReadReg8(fd,0x0B);
+    return rgbG;
 }
 
 int setRgbG(int fd,int num){
-	if(num > 255){
-		printf("Please re-enter a value less than 255\n");
-		return -1;
-	}
-	wiringPiI2CWriteReg8(fd,0x0B,num);
-	return 0;
+    if(num > 255){
+        printf("Please re-enter a value less than 255\n");
+        return -1;
+    }
+    wiringPiI2CWriteReg8(fd,0x0B,num);
+    return 0;
 }
 
 int getRgbB(int fd){
-	int rgbB = wiringPiI2CReadReg8(fd,0x0C);
-	return rgbB;
+    int rgbB = wiringPiI2CReadReg8(fd,0x0C);
+    return rgbB;
 }
 
 int setRgbB(int fd,int num){
-	if(num > 255){
-		printf("Please re-enter a value less than 255\n");
-		return -1;
-	}
-	wiringPiI2CWriteReg8(fd,0x0C,num);
-	return 0;
+    if(num > 255){
+        printf("Please re-enter a value less than 255\n");
+        return -1;
+    }
+    wiringPiI2CWriteReg8(fd,0x0C,num);
+    return 0;
 }
 
 int Init(int id){
 
     int fd = wiringPiI2CSetup(id);
-	return fd;
+    return fd;
 }
 
 int getTimer(int fd){
-	int timL = wiringPiI2CReadReg8(fd,0x0E);
-	int timH = wiringPiI2CReadReg8(fd,0x0D);
-	
-	int tim = (timH << 8) | timL;
-	return tim;
+    int timL = wiringPiI2CReadReg8(fd,0x0E);
+    int timH = wiringPiI2CReadReg8(fd,0x0D);
+    
+    int tim = (timH << 8) | timL;
+    return tim;
 }
 
 int setTimer(int fd,int min){
-	int timH = 0;
-	if(min < 255){
-		wiringPiI2CWriteReg8(fd,0x0E,min);
-		wiringPiI2CWriteReg8(fd,0x0D,0);
-	}
-	else{
-		timH = min - 255;
-		wiringPiI2CWriteReg8(fd,0x0E,255);
-		wiringPiI2CWriteReg8(fd,0x0D,timH);
-	}
-	return 0;
+    int timH = 0;
+    if(min < 255){
+        wiringPiI2CWriteReg8(fd,0x0E,min);
+        wiringPiI2CWriteReg8(fd,0x0D,0);
+    }
+    else{
+        timH = min - 255;
+        wiringPiI2CWriteReg8(fd,0x0E,255);
+        wiringPiI2CWriteReg8(fd,0x0D,timH);
+    }
+    return 0;
+}
+
+int getElectricity(int fd){
+    int elec = wiringPiI2CReadReg8(fd,0x10);
+    return elec;
+}
+
+int setElectricity(int fd,int value){
+    if((value > 255)||(value < 10)){
+        printf("Please re-enter a value range(10,255)\n");
+        return -1;
+    }
+    wiringPiI2CWriteReg8(fd,0x10,value);
+    return 0;
 }
 
 int shDown(int fd,int time){
-	char buf[32];
-	int flag = getFunction(fd);
-	flag |= shtdown;
-	setFunction(fd,flag);
-	sprintf(buf,"sleep %d && sudo shutdown now\n",time);
-	system(buf);
-	return 0;
+    char buf[32];
+//    int flag = getFunction(fd);
+//    flag |= shtdown;
+//    setFunction(fd,flag);
+    sprintf(buf,"sleep %d && sudo shutdown now\n",time);
+    system(buf);
+    return 0;
 }
 
