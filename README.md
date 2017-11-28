@@ -22,14 +22,16 @@
 Then UPS can supply Rasberry Pi when you startup the conputer next time.
     *  id     :DF
     *  version:10
-    *  energy :is charging
-    *  adc1   :2117
-    *  adc2   :2066
-    *  vcc    :0
-    *  flag   :18
+    *  energy :99%
+    *  adc1   :364
+    *  adc2   :355
+    *  vcc    :4230
     *  rgb_r  :0
     *  rgb_g  :0
     *  rgb_b  :0
+    *  Audio  :enable
+    *  electricity require :11
+
 
 ## API
    * setup I2C ,return file descriptor<br>
@@ -46,6 +48,8 @@ Then UPS can supply Rasberry Pi when you startup the conputer next time.
         int getRgbG(int fd);        //G		<br>
         int getRgbB(int fd);        //B		<br>
         int getTimer(int fd);       //get time of timing start-up <br>
+	int getElectricity(int fd); //get require Electricity <br>
+
 
 * set UPS 	<br>
             int setFunction(int fd,int flag);   //set register of enable function<br>
@@ -54,6 +58,8 @@ Then UPS can supply Rasberry Pi when you startup the conputer next time.
             int setRgbB(int fd,int num);        //B	<br>
             int setTimer(int fd,int num);       //set time of timing start-up <br>
             int shDown(int fd,int time);        //shutdown, time=0 or do not write time	<br>
+	    int setElectricity(int fd,int value);// set require Electricity <br>
+
 
 ## UPS Functions
    * ups -h    help
@@ -61,9 +67,13 @@ Then UPS can supply Rasberry Pi when you startup the conputer next time.
    * ups -s  shutdown: the time unit for it is the minute, default setting of shutdown now without a stated period of time 
    * ups -rgb  set rgb value: connect RGB device to UPS bord
    * ups -t timing start-up:  when shutdown UPS, you can set time to start-up, the time unit for it is the minute.
-   * ups -a  set time of programs porfrom when powered on
+   * ups -r  set time of programs porfrom when powered on
 	   * Rasberry will switch itself on in setting when UPS turns off and run the program as below, the time unit for it is the minute.
 	   * ups -a 1 /home/pi/ups/example/ups_count
 	   * Rasberry will switch itself on in one minute when UPS turns off and run the file: /home/pi/ups/example/ups_count	   
 	   * The function of file is count, Rasberry will turn off when one minute pass.
+   * ups -a  Audio enabled, and 1 is turn on, 0 is turn off
+
+   * ups -e Set the current. When the current is less than the set value(mA), UPS will shut down and give out power to the outside
+
    * UPS can realise amplication by external device such as speaker and etc.
